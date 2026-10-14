@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Lista de tareas",
+    "text": "Lista de tareas",
+    "visible": true,
+    "color": "Orange",
+    "date": "2026-05-01 00:00:00",
+    "tasks": [
+      {
+        "text": "Tarea de bienvenida",
+        "name": "Tarea de bienvenida",
+        "date": "2026-05-01 00:00:00",
+        "expired": null,
+        "finished": false,
+        "visible": true
+      }
+    ]
+  }
+]

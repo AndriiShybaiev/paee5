@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Mis_Listas": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

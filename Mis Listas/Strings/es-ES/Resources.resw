@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="noListas" xml:space="preserve">
+    <value>No tienes listas</value>
+  </data>
+  <data name="noTareas" xml:space="preserve">
+    <value>¡Lista vacía!</value>
+  </data>
+  <data name="toolTipNuevaLista" xml:space="preserve">
+    <value>Añadir nueva lista</value>
+  </data>
+  <data name="btnNuevaLista.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Añadir nueva lista</value>
+  </data>
+  <data name="btnDeleteList.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Borrar lista actual</value>
+  </data>
+  <data name="toolTipDeleteList" xml:space="preserve">
+    <value>Borrar lista actual</value>
+  </data>
+  <data name="btnNuevaTarea.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Añadir nueva tarea</value>
+  </data>
+  <data name="toolTipNuevaTarea" xml:space="preserve">
+    <value>Añadir nueva tarea</value>
+  </data>
+  <data name="itemXdef.Content" xml:space="preserve">
+    <value>No tienes listas</value>
+  </data>
+  <data name="lblXdef.Text" xml:space="preserve">
+    <value>¡Lista vacía!</value>
+  </data>
+  <data name="txtSeguro" xml:space="preserve">
+    <value>¿Está seguro?</value>
+  </data>
+  <data name="txtSeguroCerrar" xml:space="preserve">
+    <value>¿Está seguro de que desea cerrar la aplicación?</value>
+  </data>
+  <data name="txtSeguroBorrarLista" xml:space="preserve">
+    <value>¿Está seguro de que desea borrar la lista '{0}'?</value>
+  </data>
+  <data name="txtSeguroBorrarTarea" xml:space="preserve">
+    <value>¿Está seguro de que desea borrar la tarea '{0}'?</value>
+  </data>
+  <data name="txtAtencion" xml:space="preserve">
+    <value>¡Atención!</value>
+  </data>
+  <data name="txtSi" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="txtNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="tituloNuevaLista" xml:space="preserve">
+    <value>Creación de una nueva lista</value>
+  </data>
+  <data name="lblNuevaLista" xml:space="preserve">
+    <value>Nombre de la lista:</value>
+  </data>
+  <data name="ttpNuevaLista" xml:space="preserve">
+    <value>Campo obligatorio</value>
+  </data>
+  <data name="errNuevaLista" xml:space="preserve">
+    <value>Debe escribir un nombre para la lista</value>
+  </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Añadir</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="tituloNuevaTarea" xml:space="preserve">
+    <value>Añadir una nueva tarea</value>
+  </data>
+  <data name="lblNuevaTarea" xml:space="preserve">
+    <value>Descripción de la tarea:</value>
+  </data>
+  <data name="ttpNuevaTarea" xml:space="preserve">
+    <value>Campo obligatorio</value>
+  </data>
+  <data name="errNuevaTarea" xml:space="preserve">
+    <value>Debe escribir una descripción</value>
+  </data>
+</root>

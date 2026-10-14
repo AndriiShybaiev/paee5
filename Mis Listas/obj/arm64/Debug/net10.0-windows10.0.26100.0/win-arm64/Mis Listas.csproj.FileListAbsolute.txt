@@ -1,0 +1,4 @@
+C:\Users\User\Nextcloud2\Code\PAEE\Taller5\Mis Listas\Mis Listas\obj\arm64\Debug\net10.0-windows10.0.26100.0\win-arm64\Mis Listas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Nextcloud2\Code\PAEE\Taller5\Mis Listas\Mis Listas\obj\arm64\Debug\net10.0-windows10.0.26100.0\win-arm64\Mis Listas.AssemblyInfoInputs.cache
+C:\Users\User\Nextcloud2\Code\PAEE\Taller5\Mis Listas\Mis Listas\obj\arm64\Debug\net10.0-windows10.0.26100.0\win-arm64\Mis Listas.AssemblyInfo.cs
+C:\Users\User\Nextcloud2\Code\PAEE\Taller5\Mis Listas\Mis Listas\obj\arm64\Debug\net10.0-windows10.0.26100.0\win-arm64\Mis Listas.csproj.CoreCompileInputs.cache

@@ -1,0 +1,301 @@
+﻿<Page
+    x:Class="Mis_Listas.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Mis_Listas"
+    xmlns:controls="using:Mis_Listas.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="Verdana"
+    Foreground="White"
+    FontSize="14"
+    Width="600"
+    Height="750"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    Margin="0,0,0,0">
+
+    <Grid x:ConnectionId='2' x:Name="MainGrid" Background="Orange" Width="600" Height="750" VerticalAlignment="Center" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Top Header: List Selection & Main Action Buttons -->
+        <Grid Grid.Row="0" Margin="15,15,15,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- List Selector ComboBox -->
+            <ComboBox x:ConnectionId='8'
+                x:Name="slctList"
+                Grid.Column="0"
+                Height="45"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontFamily="Verdana"
+                                                            >
+                <ComboBoxItem x:ConnectionId='33' x:Name="itemXdef" Content="No tienes listas" />
+            </ComboBox>
+
+            <!-- Add List Button with Flyout -->
+            <Button x:ConnectionId='9'
+                x:Name="btnNuevaLista"
+                Grid.Column="1"
+                Width="50"
+                Height="50"
+                Margin="8,0,0,0"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                                           
+                ToolTipService.ToolTip="Añadir nueva lista">
+                <Image Source="/Assets/images layout/addList.png" Width="44" Height="44" />
+                <Button.Flyout>
+                    <Flyout x:ConnectionId='23' x:Name="flyNuevaLista">
+                        <Grid Background="Orange" BorderBrush="LightGray" BorderThickness="1" Padding="15" Width="360">
+                            <StackPanel Spacing="10">
+                                <TextBlock x:ConnectionId='24'
+                                    x:Name="tituloNuevaLista"
+                                    Text="Creación de una nueva lista"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="White" />
+
+                                <TextBlock x:ConnectionId='25'
+                                    x:Name="lblNuevaLista"
+                                    Text="Nombre de la lista:"
+                                    FontSize="13"
+                                    Foreground="White" />
+
+                                <TextBox x:ConnectionId='26'
+                                    x:Name="txt_newList_name"
+                                    Height="38"
+                                    FontSize="14"
+                                    PlaceholderText="Campo obligatorio" />
+
+                                <TextBlock x:ConnectionId='27'
+                                    x:Name="lblColorLista"
+                                    Text="Color de la lista:"
+                                    FontSize="13"
+                                    Foreground="White" />
+
+                                <ColorPicker x:ConnectionId='28'
+                                    x:Name="colorPickerLista"
+                                    IsColorSpectrumVisible="True"
+                                    IsColorPreviewVisible="False"
+                                    IsHexInputVisible="False"
+                                    IsAlphaEnabled="False"
+                                    Color="Orange"
+                                    Height="150" />
+
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:ConnectionId='29'
+                                        x:Name="btnAdd_newList"
+                                        Grid.Column="0"
+                                        Background="#2E7D32"
+                                        Foreground="White"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="0,0,5,0"
+                                                                    >
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <SymbolIcon Symbol="Accept" Margin="0,0,5,0" />
+                                            <TextBlock x:ConnectionId='32' x:Name="txt_btnAdd_newList" Text="Añadir" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button x:ConnectionId='30'
+                                        x:Name="btnCancel_newList"
+                                        Grid.Column="1"
+                                        Background="#C62828"
+                                        Foreground="White"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="5,0,0,0"
+                                                                       >
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <SymbolIcon Symbol="Cancel" Margin="0,0,5,0" />
+                                            <TextBlock x:ConnectionId='31' x:Name="txt_btnCancel_newList" Text="Cancelar" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+
+            <!-- Delete List Button -->
+            <Button x:ConnectionId='10'
+                x:Name="btnDeleteList"
+                Grid.Column="2"
+                Width="50"
+                Height="50"
+                Margin="6,0,0,0"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                                           
+                ToolTipService.ToolTip="Borrar lista actual">
+                <Image Source="/Assets/images layout/deleteList.png" Width="44" Height="44" />
+            </Button>
+
+            <!-- Add Task Button with Flyout -->
+            <Button x:ConnectionId='11'
+                x:Name="btnNuevaTarea"
+                Grid.Column="3"
+                Width="50"
+                Height="50"
+                Margin="6,0,0,0"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="0"
+                                           
+                ToolTipService.ToolTip="Añadir nueva tarea">
+                <Image Source="/Assets/images layout/addTask.png" Width="44" Height="44" />
+                <Button.Flyout>
+                    <Flyout x:ConnectionId='12' x:Name="flyAddTask">
+                        <Grid Background="Orange" BorderBrush="LightGray" BorderThickness="1" Padding="15" Width="360">
+                            <StackPanel Spacing="10">
+                                <TextBlock x:ConnectionId='13'
+                                    x:Name="tituloNuevaTarea"
+                                    Text="Añadir una nueva tarea"
+                                    FontSize="16"
+                                    FontWeight="Bold"
+                                    Foreground="White" />
+
+                                <TextBlock x:ConnectionId='14'
+                                    x:Name="lblNuevaTarea"
+                                    Text="Descripción de la tarea:"
+                                    FontSize="13"
+                                    Foreground="White" />
+
+                                <TextBox x:ConnectionId='15'
+                                    x:Name="txt_newTask_name"
+                                    Height="38"
+                                    FontSize="14"
+                                    PlaceholderText="Campo obligatorio" />
+
+                                <TextBlock x:ConnectionId='16'
+                                    x:Name="lblFechaTarea"
+                                    Text="Fecha de vencimiento (opcional):"
+                                    FontSize="13"
+                                    Foreground="White" />
+
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <CheckBox x:ConnectionId='21' x:Name="chkEnableDueDate" Content="Fijar fecha" Foreground="White"                                                                           />
+                                    <DatePicker x:ConnectionId='22' x:Name="dp_newTask_expired" IsEnabled="False" />
+                                </StackPanel>
+
+                                <Grid Margin="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:ConnectionId='17'
+                                        x:Name="btnAdd_newTask"
+                                        Grid.Column="0"
+                                        Background="#2E7D32"
+                                        Foreground="White"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="0,0,5,0"
+                                                                    >
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <SymbolIcon Symbol="Accept" Margin="0,0,5,0" />
+                                            <TextBlock x:ConnectionId='20' x:Name="txt_btnAdd_newTask" Text="Añadir" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button x:ConnectionId='18'
+                                        x:Name="btnCancel_newTask"
+                                        Grid.Column="1"
+                                        Background="#C62828"
+                                        Foreground="White"
+                                        HorizontalAlignment="Stretch"
+                                        Margin="5,0,0,0"
+                                                                       >
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <SymbolIcon Symbol="Cancel" Margin="0,0,5,0" />
+                                            <TextBlock x:ConnectionId='19' x:Name="txt_btnCancel_newTask" Text="Cancelar" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </Grid>
+
+        <!-- Filter & Sort Bar (Ampliaciones) -->
+        <Grid Grid.Row="1" Margin="15,0,15,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Filter ComboBox -->
+            <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                <ComboBox x:ConnectionId='7'
+                    x:Name="slctFilter"
+                    HorizontalAlignment="Stretch"
+                    SelectedIndex="0"
+                                                                  >
+                    <ComboBoxItem Content="Pendientes" Tag="pending" />
+                    <ComboBoxItem Content="Todas las tareas" Tag="all" />
+                    <ComboBoxItem Content="Terminadas" Tag="finished" />
+                    <ComboBoxItem Content="Eliminadas" Tag="deleted" />
+                </ComboBox>
+            </StackPanel>
+
+            <!-- Sort ComboBox -->
+            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                <ComboBox x:ConnectionId='6'
+                    x:Name="slctSort"
+                    HorizontalAlignment="Stretch"
+                    SelectedIndex="0"
+                                                                >
+                    <ComboBoxItem Content="Orden de creación" Tag="created" />
+                    <ComboBoxItem Content="Por descripción" Tag="name" />
+                    <ComboBoxItem Content="Por vencimiento" Tag="expired" />
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <!-- Tasks Content Container -->
+        <Border Grid.Row="2" Margin="15,0,15,15" Background="White" CornerRadius="8" Padding="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <Grid x:ConnectionId='3' x:Name="ListGrid">
+                    <!-- Empty State TextBlock -->
+                    <TextBlock x:ConnectionId='4'
+                        x:Name="lblXdef"
+                        Text="¡Lista vacía!"
+                        FontFamily="Verdana"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="#888888"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0,40,0,0"
+                        Visibility="Visible" />
+
+                    <!-- Tasks StackPanel -->
+                    <StackPanel x:ConnectionId='5' x:Name="pnlList" Margin="0,0,0,0" />
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>
+

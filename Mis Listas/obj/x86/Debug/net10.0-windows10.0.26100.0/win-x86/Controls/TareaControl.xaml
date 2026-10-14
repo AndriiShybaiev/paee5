@@ -1,0 +1,82 @@
+﻿<UserControl
+    x:Class="Mis_Listas.Controls.TareaControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="70"
+    d:DesignWidth="560">
+
+    <Grid Margin="0,0,0,5" Background="Transparent">
+        <Border x:ConnectionId='2' x:Name="pnlContainer" Background="#FFFFE0" CornerRadius="4" Padding="10,6" BorderThickness="1" BorderBrush="#E0E0D0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Task Text & Due Date -->
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <TextBlock x:ConnectionId='5'
+                        x:Name="lblTask"
+                        Text="Task text"
+                        TextWrapping="Wrap"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="#333333"
+                                                />
+
+                    <TextBox x:ConnectionId='6'
+                        x:Name="txtTaskEdit"
+                        Visibility="Collapsed"
+                        FontFamily="Verdana"
+                        FontSize="15"
+                        Margin="0,2,0,2"
+                                                         
+                                                      />
+
+                    <StackPanel x:ConnectionId='7' x:Name="pnlDueDate" Orientation="Horizontal" Margin="0,3,0,0" Visibility="Collapsed">
+                        <Border x:ConnectionId='8' x:Name="badgeDueDate" Background="#EEEEEE" CornerRadius="3" Padding="6,1,6,1">
+                            <TextBlock x:ConnectionId='9' x:Name="lblDueDate" FontSize="11" FontFamily="Verdana" Foreground="#555555" Text="Vence: --" />
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Check / Complete Button -->
+                <Button x:ConnectionId='3'
+                    x:Name="btnCheckTask"
+                    Grid.Column="1"
+                    Width="40"
+                    Height="40"
+                    Padding="0"
+                    Margin="0,0,6,0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    VerticalAlignment="Center"
+                                              
+                    ToolTipService.ToolTip="Marcar como completada">
+                    <Image Source="/Assets/images layout/check.png" Width="28" Height="28" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+
+                <!-- Delete Button -->
+                <Button x:ConnectionId='4'
+                    x:Name="btnDeleteTask"
+                    Grid.Column="2"
+                    Width="40"
+                    Height="40"
+                    Padding="0"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    VerticalAlignment="Center"
+                                               
+                    ToolTipService.ToolTip="Borrar tarea">
+                    <Image Source="/Assets/images layout/deleteTask.png" Width="28" Height="28" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
+
