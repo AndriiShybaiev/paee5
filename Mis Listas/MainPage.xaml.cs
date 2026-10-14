@@ -20,25 +20,66 @@ namespace Mis_Listas
     public sealed partial class MainPage : Page
     {
         public List<cList> lists = new List<cList>();
-        public ResourceLoader textos;
+        public ResourceLoader? textos;
 
         public MainPage()
         {
             InitializeComponent();
 
-            this.textos = new ResourceLoader();
+            try
+            {
+                this.textos = new ResourceLoader();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"ResourceLoader init error: {ex.Message}");
+                this.textos = null;
+            }
 
-            ApplicationView.PreferredLaunchViewSize = new Size(600, 750);
-            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+            try
+            {
+                ApplicationView.PreferredLaunchViewSize = new Size(600, 750);
+                ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+                ApplicationView.GetForCurrentView()?.TryResizeView(new Size(600, 750));
+            }
+            catch { }
 
-            SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+            try
+            {
+                SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += OnCloseRequest;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"CloseRequested registration failed: {ex.Message}");
+            }
 
             Loaded += MainPage_Loaded;
         }
 
+        public string GetString(string key, string fallback = "")
+        {
+            try
+            {
+                if (textos != null)
+                {
+                    string val = textos.GetString(key);
+                    if (!string.IsNullOrEmpty(val)) return val;
+                }
+            }
+            catch { }
+            return fallback;
+        }
+
         private async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            await LoadData();
+            try
+            {
+                await LoadData();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"MainPage_Loaded error: {ex.Message}");
+            }
         }
 
         private async Task LoadData()
@@ -52,7 +93,7 @@ namespace Mis_Listas
             }
             else
             {
-                UpdateAppTitle(textos.GetString("noListas"));
+                UpdateAppTitle(GetString("noListas", "No tienes listas"));
                 LoadTasks(-1);
             }
         }
@@ -72,7 +113,7 @@ namespace Mis_Listas
                 ComboBoxItem defaultItem = new ComboBoxItem
                 {
                     Name = "itemXdef",
-                    Content = textos.GetString("noListas")
+                    Content = GetString("noListas", "No tienes listas")
                 };
                 slctList.Items.Add(defaultItem);
                 slctList.SelectedIndex = 0;
@@ -106,7 +147,7 @@ namespace Mis_Listas
             }
             else
             {
-                UpdateAppTitle(textos.GetString("noListas"));
+                UpdateAppTitle(GetString("noListas", "No tienes listas"));
                 LoadTasks(-1);
             }
         }
@@ -273,11 +314,11 @@ namespace Mis_Listas
             {
                 ContentDialog permDeleteDialog = new ContentDialog
                 {
-                    Title = textos.GetString("txtAtencion"),
+                    Title = GetString("txtAtencion", "¡Atención!"),
                     Content = $"¿Desea restaurar la tarea '{task.text}' o eliminarla permanentemente?",
                     PrimaryButtonText = "Restaurar",
                     SecondaryButtonText = "Eliminar",
-                    CloseButtonText = textos.GetString("txtNo")
+                    CloseButtonText = GetString("txtNo", "No")
                 };
 
                 var permRes = await permDeleteDialog.ShowAsync();
@@ -298,10 +339,10 @@ namespace Mis_Listas
 
             ContentDialog msgBox = new ContentDialog
             {
-                Title = textos.GetString("txtAtencion"),
-                Content = string.Format(textos.GetString("txtSeguroBorrarTarea"), task.text),
-                PrimaryButtonText = textos.GetString("txtSi"),
-                CloseButtonText = textos.GetString("txtNo")
+                Title = GetString("txtAtencion", "¡Atención!"),
+                Content = string.Format(GetString("txtSeguroBorrarTarea", "¿Está seguro de que desea borrar la tarea '{0}'?"), task.text),
+                PrimaryButtonText = GetString("txtSi", "Sí"),
+                CloseButtonText = GetString("txtNo", "No")
             };
 
             var res = await msgBox.ShowAsync();
@@ -338,12 +379,12 @@ namespace Mis_Listas
 
         private void btnNuevaLista_Click(object sender, RoutedEventArgs e)
         {
-            tituloNuevaLista.Text = textos.GetString("tituloNuevaLista");
-            lblNuevaLista.Text = textos.GetString("lblNuevaLista");
-            txt_btnAdd_newList.Text = textos.GetString("btnAdd");
-            txt_btnCancel_newList.Text = textos.GetString("btnCancel");
+            tituloNuevaLista.Text = GetString("tituloNuevaLista", "Creación de una nueva lista");
+            lblNuevaLista.Text = GetString("lblNuevaLista", "Nombre de la lista:");
+            txt_btnAdd_newList.Text = GetString("btnAdd", "Añadir");
+            txt_btnCancel_newList.Text = GetString("btnCancel", "Cancelar");
             txt_newList_name.Text = "";
-            txt_newList_name.PlaceholderText = textos.GetString("ttpNuevaLista");
+            txt_newList_name.PlaceholderText = GetString("ttpNuevaLista", "Campo obligatorio");
             txt_newList_name.PlaceholderForeground = new SolidColorBrush(Colors.LightGray);
         }
 
@@ -376,7 +417,7 @@ namespace Mis_Listas
             }
             else
             {
-                txt_newList_name.PlaceholderText = textos.GetString("errNuevaLista");
+                txt_newList_name.PlaceholderText = GetString("errNuevaLista", "Debe escribir un nombre para la lista");
                 txt_newList_name.PlaceholderForeground = new SolidColorBrush(Colors.Red);
             }
         }
@@ -396,10 +437,10 @@ namespace Mis_Listas
 
             ContentDialog msgBox = new ContentDialog
             {
-                Title = textos.GetString("txtAtencion"),
-                Content = string.Format(textos.GetString("txtSeguroBorrarLista"), listName),
-                PrimaryButtonText = textos.GetString("txtSi"),
-                CloseButtonText = textos.GetString("txtNo")
+                Title = GetString("txtAtencion", "¡Atención!"),
+                Content = string.Format(GetString("txtSeguroBorrarLista", "¿Está seguro de que desea borrar la lista '{0}'?"), listName),
+                PrimaryButtonText = GetString("txtSi", "Sí"),
+                CloseButtonText = GetString("txtNo", "No")
             };
 
             var res = await msgBox.ShowAsync();
@@ -416,7 +457,7 @@ namespace Mis_Listas
                 else
                 {
                     slctList.SelectedIndex = -1;
-                    UpdateAppTitle(textos.GetString("noListas"));
+                    UpdateAppTitle(GetString("noListas", "No tienes listas"));
                     LoadTasks(-1);
                 }
             }
@@ -430,12 +471,12 @@ namespace Mis_Listas
                 return;
             }
 
-            tituloNuevaTarea.Text = textos.GetString("tituloNuevaTarea");
-            lblNuevaTarea.Text = textos.GetString("lblNuevaTarea");
-            txt_btnAdd_newTask.Text = textos.GetString("btnAdd");
-            txt_btnCancel_newTask.Text = textos.GetString("btnCancel");
+            tituloNuevaTarea.Text = GetString("tituloNuevaTarea", "Añadir una nueva tarea");
+            lblNuevaTarea.Text = GetString("lblNuevaTarea", "Descripción de la tarea:");
+            txt_btnAdd_newTask.Text = GetString("btnAdd", "Añadir");
+            txt_btnCancel_newTask.Text = GetString("btnCancel", "Cancelar");
             txt_newTask_name.Text = "";
-            txt_newTask_name.PlaceholderText = textos.GetString("ttpNuevaTarea");
+            txt_newTask_name.PlaceholderText = GetString("ttpNuevaTarea", "Campo obligatorio");
             txt_newTask_name.PlaceholderForeground = new SolidColorBrush(Colors.LightGray);
             chkEnableDueDate.IsChecked = false;
             dp_newTask_expired.Date = DateTimeOffset.Now.AddDays(1);
@@ -485,7 +526,7 @@ namespace Mis_Listas
             }
             else
             {
-                txt_newTask_name.PlaceholderText = textos.GetString("errNuevaTarea");
+                txt_newTask_name.PlaceholderText = GetString("errNuevaTarea", "Debe escribir una descripción");
                 txt_newTask_name.PlaceholderForeground = new SolidColorBrush(Colors.Red);
             }
         }
@@ -519,10 +560,10 @@ namespace Mis_Listas
 
             ContentDialog dialog = new ContentDialog
             {
-                Title = textos.GetString("txtAtencion"),
-                Content = textos.GetString("txtSeguroCerrar"),
-                PrimaryButtonText = textos.GetString("txtSi"),
-                CloseButtonText = textos.GetString("txtNo")
+                Title = GetString("txtAtencion", "¡Atención!"),
+                Content = GetString("txtSeguroCerrar", "¿Está seguro de que desea cerrar la aplicación?"),
+                PrimaryButtonText = GetString("txtSi", "Sí"),
+                CloseButtonText = GetString("txtNo", "No")
             };
 
             var res = await dialog.ShowAsync();

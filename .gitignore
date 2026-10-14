@@ -1,0 +1,33 @@
+## [Visual Studio / MSBuild]
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+## [UWP / App Packages]
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+
+## [JetBrains Rider]
+.idea/
+*.sln.iml
+
+## [Build & Runtime Artifacts]
+*.suo
+*.userprefs
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+project.lock.json
+*.nuget.props
+*.nuget.targets
+
+## [Junie Session Data]
+.junie/
